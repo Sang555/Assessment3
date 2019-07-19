@@ -32,16 +32,21 @@ public class UserController {
         List<User> userList = userService.listAll();
         return userList;
     }
-	@GetMapping(value="/{id}", produces= {MediaType.APPLICATION_JSON_VALUE , MediaType.APPLICATION_XML_VALUE})
+	@GetMapping(value="/user/{id}", produces= {MediaType.APPLICATION_JSON_VALUE , MediaType.APPLICATION_XML_VALUE})
 	public User findById(@ApiParam(value="FIND BY ID")@PathVariable("id") long id)
 	{
 		return userService.findById(id);
 	}
 	
-	@GetMapping(value="/{id}/posts", produces= {MediaType.APPLICATION_JSON_VALUE , MediaType.APPLICATION_XML_VALUE})
+	@GetMapping(value="/user/{id}/posts", produces= {MediaType.APPLICATION_JSON_VALUE , MediaType.APPLICATION_XML_VALUE})
 	public List<Posts> findPostById(@ApiParam(value="FIND BY ID")@PathVariable("id") long id)
 	{
 		return userService.findPostById(id);
+	} 
+	@GetMapping(value="/user/{id}/posts/{pid}", produces= {MediaType.APPLICATION_JSON_VALUE , MediaType.APPLICATION_XML_VALUE})
+	public Posts findPostById(@ApiParam(value="FIND BY ID")@PathVariable("id") long id,@ApiParam(value="FIND BY PID")@PathVariable("pid") long pid)
+	{
+		return userService.findPostByIdById(id,pid);
 	} 
 	
 	@PutMapping(value="/{id}", consumes= {MediaType.APPLICATION_JSON_VALUE ,MediaType.APPLICATION_XML_VALUE})
@@ -50,7 +55,7 @@ public class UserController {
 		userService.update(id,user);
 	}
 
-	@DeleteMapping(value="/{id}")
+	@DeleteMapping(value="/user/{id}")
 	public void deleteProduct(@PathVariable long id)
 	{
 		userService.deleteuser(id);		
@@ -59,29 +64,14 @@ public class UserController {
     @PostMapping(value = "/users", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseStatus(HttpStatus.CREATED)
     public void registerUser(@Valid @RequestBody User user){
-        Posts posts1 = new Posts();
-        posts1.setId(1);
-        posts1.setUser_id(1);
-        posts1.setTitle("P1");
-        posts1.setBody("post1");
-        Posts posts2 = new Posts();
-        posts2.setId(2);
-        posts2.setUser_id(1);
-        posts2.setTitle("P2");
-        posts2.setBody("post2");
 
-        List<Posts> posts = new ArrayList<Posts>();
-        posts.add(posts1);
-        posts.add(posts2);
-        user.setPosts(posts);
-        UserDetails details = new UserDetails();
-        details.setId(1);
-        details.setCity("Bangalore");
-        details.setState("Karnataka");
-        details.setZipCode("577142");
-        user.setUserDetails(details);
         userService.saveUser(user);
         System.out.println("Came inside the post method of register user ....");
         
     }
+	@PostMapping(value="/user/{id}/posts", consumes= {MediaType.APPLICATION_JSON_VALUE , MediaType.APPLICATION_XML_VALUE})
+	public void putPostById(@ApiParam(value="FIND BY ID")@PathVariable("id") long id,@Valid @RequestBody Posts posts )
+	{
+		userService.putPostById(id,posts);
+	} 
 }

@@ -51,4 +51,20 @@ public class userDAOImp implements UserDAO{
 		return sessionFactory.getCurrentSession().get(User.class, id).getPosts();
 	}
 
+	public Posts findPostByIdById(long id, long pid) {
+		// TODO Auto-generated method stub
+		List<Posts> plist= sessionFactory.getCurrentSession().get(User.class, id).getPosts();
+		for(Posts p: plist)
+		{
+			if(p.getId()==pid)
+				return p;
+		}
+			return null;
+	}
+
+	public void putPostById(long id, Posts post) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

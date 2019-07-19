@@ -60,4 +60,15 @@ public class UserServiceImp implements UserService{
 		return userDAO.findPostById(id);
 	}
 
+	public Posts findPostByIdById(long id, long pid) {
+		// TODO Auto-generated method stub
+		return userDAO.findPostByIdById(id,pid);
+	}
+
+	public void putPostById(long id, Posts posts) {
+		// TODO Auto-generated method stub
+		userDAO.putPostById(id,posts);
+		
+	}
+
 }
