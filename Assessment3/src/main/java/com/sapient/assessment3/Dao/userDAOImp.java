@@ -85,4 +85,14 @@ public class userDAOImp implements UserDAO{
 		
 	}
 
+	public void update(User user) {
+		User user1 = findById(user.getId());
+		Session session = sessionFactory.getCurrentSession();
+		if (user.getName() == null)
+			user.setName(user1.getName());
+
+			// TODO Auto-generated method stub
+		
+	}
+
 }

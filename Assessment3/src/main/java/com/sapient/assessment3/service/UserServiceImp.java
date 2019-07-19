@@ -77,4 +77,11 @@ public class UserServiceImp implements UserService{
 		
 	}
 
+	public void update(User user) {
+		// TODO Auto-generated method stub
+		userDAO.update(user);
+	}
+	
+
+
 }

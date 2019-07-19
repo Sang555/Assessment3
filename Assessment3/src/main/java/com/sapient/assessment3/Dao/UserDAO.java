@@ -13,5 +13,6 @@ public interface UserDAO {
 	public Posts findPostByIdById(long id,long pid);
 	public void putPostById(long id, List<Posts> post ) ;
 	public void deletepost(long id); 
+	public void update( User user);
 
 }

@@ -50,10 +50,10 @@ public class UserController {
 		return userService.findPostByIdById(id,pid);
 	} 
 	
-	@PutMapping(value="/{id}", consumes= {MediaType.APPLICATION_JSON_VALUE ,MediaType.APPLICATION_XML_VALUE})
-	public void updateUser(@PathVariable("id") int id, User user)
+	@PutMapping(value="/", consumes= {MediaType.APPLICATION_JSON_VALUE ,MediaType.APPLICATION_XML_VALUE})
+	public void updateUser( User user)
 	{
-		userService.update(id,user);
+		userService.update(user);
 	}
 
 	@DeleteMapping(value="/{id}")
