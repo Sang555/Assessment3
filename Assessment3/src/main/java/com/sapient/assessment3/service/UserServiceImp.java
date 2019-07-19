@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sapient.assessment3.Dao.UserDAO;
-import com.sapient.assessment3.model.User;
+import com.sapient.assessment3.model.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -55,7 +55,7 @@ public class UserServiceImp implements UserService{
 		userDAO.deleteuser(id);
 	}
 
-	public User findPostById(long id) {
+	public List<Posts> findPostById(long id) {
 		// TODO Auto-generated method stub
 		return userDAO.findPostById(id);
 	}

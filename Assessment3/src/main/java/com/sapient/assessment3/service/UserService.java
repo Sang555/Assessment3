@@ -7,6 +7,6 @@ public interface UserService {
 	public User findById(long id);
 	public void update(long id, User user);
 	public void deleteuser(long id); 
-	public User findPostById(long id);
+	public List<Posts> findPostById(long id);
 
 }

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sapient.assessment3.model.User;
+import com.sapient.assessment3.model.*;
 
 @Transactional
 @Repository("hibernateDAOImp")

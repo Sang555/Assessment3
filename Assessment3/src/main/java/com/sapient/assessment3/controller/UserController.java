@@ -39,7 +39,7 @@ public class UserController {
 	}
 	
 	@GetMapping(value="/{id}/posts", produces= {MediaType.APPLICATION_JSON_VALUE , MediaType.APPLICATION_XML_VALUE})
-	public User findPostById(@ApiParam(value="FIND BY ID")@PathVariable("id") long id)
+	public List<Posts> findPostById(@ApiParam(value="FIND BY ID")@PathVariable("id") long id)
 	{
 		return userService.findPostById(id);
 	} 
