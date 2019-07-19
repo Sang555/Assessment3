@@ -10,4 +10,5 @@ public interface UserService {
 	public List<Posts> findPostById(long id);
 	public Posts findPostByIdById(long id,long pid);
 	public void putPostById(long id, List<Posts> post ) ;
+	public void deletepost(long id); 
 }

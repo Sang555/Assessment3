@@ -1,4 +1,5 @@
 package com.sapient.assessment3.Dao;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -66,6 +67,20 @@ public class userDAOImp implements UserDAO{
 		User user=sessionFactory.getCurrentSession().get(User.class, id);
 		List<Posts> plist= user.getPosts();
 		plist.addAll(posts);
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void deletepost(long id)
+	{
+		Session session = sessionFactory.getCurrentSession();
+		User user = findById(id);
+		for (Posts post : user.getPosts()) {
+			session.delete(post);
+		}
+		user.setPosts(null);
+		session.saveOrUpdate(user);
+		
 		// TODO Auto-generated method stub
 		
 	}

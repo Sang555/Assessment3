@@ -14,6 +14,7 @@ import com.sapient.assessment3.model.*;
 import com.sapient.assessment3.service.*;
 
 @RestController
+@RequestMapping("/api/v1/users")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -32,18 +33,18 @@ public class UserController {
         List<User> userList = userService.listAll();
         return userList;
     }
-	@GetMapping(value="/user/{id}", produces= {MediaType.APPLICATION_JSON_VALUE , MediaType.APPLICATION_XML_VALUE})
+	@GetMapping(value="/{id}", produces= {MediaType.APPLICATION_JSON_VALUE , MediaType.APPLICATION_XML_VALUE})
 	public User findById(@ApiParam(value="FIND BY ID")@PathVariable("id") long id)
 	{
 		return userService.findById(id);
 	}
 	
-	@GetMapping(value="/user/{id}/posts", produces= {MediaType.APPLICATION_JSON_VALUE , MediaType.APPLICATION_XML_VALUE})
+	@GetMapping(value="/{id}/posts", produces= {MediaType.APPLICATION_JSON_VALUE , MediaType.APPLICATION_XML_VALUE})
 	public List<Posts> findPostById(@ApiParam(value="FIND BY ID")@PathVariable("id") long id)
 	{
 		return userService.findPostById(id);
 	} 
-	@GetMapping(value="/user/{id}/posts/{pid}", produces= {MediaType.APPLICATION_JSON_VALUE , MediaType.APPLICATION_XML_VALUE})
+	@GetMapping(value="/{id}/posts/{pid}", produces= {MediaType.APPLICATION_JSON_VALUE , MediaType.APPLICATION_XML_VALUE})
 	public Posts findPostById(@ApiParam(value="FIND BY ID")@PathVariable("id") long id,@ApiParam(value="FIND BY PID")@PathVariable("pid") long pid)
 	{
 		return userService.findPostByIdById(id,pid);
@@ -55,13 +56,18 @@ public class UserController {
 		userService.update(id,user);
 	}
 
-	@DeleteMapping(value="/user/{id}")
-	public void deleteProduct(@PathVariable long id)
+	@DeleteMapping(value="/{id}")
+	public void deleteUser(@PathVariable long id)
 	{
 		userService.deleteuser(id);		
 	}
+	@DeleteMapping(value="/{id}/posts")
+	public void deleteUserPost(@PathVariable long id)
+	{
+		userService.deletepost(id);		
+	}
     
-    @PostMapping(value = "/users", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @PostMapping(value = "/", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseStatus(HttpStatus.CREATED)
     public void registerUser(@Valid @RequestBody User user){
 
@@ -69,7 +75,7 @@ public class UserController {
         System.out.println("Came inside the post method of register user ....");
         
     }
-	@PostMapping(value="/user/{id}/posts", consumes= {MediaType.APPLICATION_JSON_VALUE , MediaType.APPLICATION_XML_VALUE})
+	@PostMapping(value="/{id}/posts", consumes= {MediaType.APPLICATION_JSON_VALUE , MediaType.APPLICATION_XML_VALUE})
 	public void putPostById(@ApiParam(value="FIND BY ID")@PathVariable("id") long id,@Valid @RequestBody List<Posts> posts )
 	{
 		userService.putPostById(id,posts);

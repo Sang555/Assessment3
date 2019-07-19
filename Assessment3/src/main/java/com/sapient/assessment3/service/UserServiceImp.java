@@ -71,4 +71,10 @@ public class UserServiceImp implements UserService{
 		
 	}
 
+	public void deletepost(long id) {
+		// TODO Auto-generated method stub
+		userDAO.deletepost(id);
+		
+	}
+
 }
