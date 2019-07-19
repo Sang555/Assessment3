@@ -29,4 +29,9 @@ public class userDAOImp implements UserDAO{
 		return session.createQuery("from User").list();
 	}
 
+	public User findById(int id) {
+		// TODO Auto-generated method stub
+		return sessionFactory.getCurrentSession().get(User.class, id);
+	}
+
 }

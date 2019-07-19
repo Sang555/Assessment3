@@ -4,5 +4,6 @@ import java.util.*;
 public interface UserService {
 	public void saveUser(User user);
 	public List<User> listAll();
+	public User findById(int id);
 
 }

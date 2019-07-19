@@ -32,6 +32,13 @@ public class UserController {
         List<User> userList = userService.listAll();
         return userList;
     }
+	@GetMapping(value="/{id}", produces= {MediaType.APPLICATION_JSON_VALUE , MediaType.APPLICATION_XML_VALUE})
+	public User findById(@ApiParam(value="FIND BY ID")@PathVariable("id") int id)
+	{
+		return userService.findById(id);
+	}
+	
+    
     @PostMapping(value = "/users", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseStatus(HttpStatus.CREATED)
     public void registerUser(@Valid @RequestBody User user){

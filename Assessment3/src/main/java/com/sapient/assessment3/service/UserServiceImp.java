@@ -39,4 +39,9 @@ public class UserServiceImp implements UserService{
 		return userList;
 	}
 
+	public User findById(int id) {
+		// TODO Auto-generated method stub
+		return userDAO.findById(id);
+	}
+
 }
