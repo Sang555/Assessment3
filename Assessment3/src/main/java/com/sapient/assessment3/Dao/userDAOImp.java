@@ -39,11 +39,16 @@ public class userDAOImp implements UserDAO{
 		
 	}
 
-	public void deleteuser(int id) {
+	public void deleteuser(long id) {
 		// TODO Auto-generated method stub
         Session session = sessionFactory.getCurrentSession();
         User user = session.byId(User.class).load(id);
         session.delete(user);
+	}
+
+	public List<Posts> findPostById(long id) {
+		// TODO Auto-generated method stub
+		return sessionFactory.getCurrentSession().get(User.class, id).getPosts();
 	}
 
 }

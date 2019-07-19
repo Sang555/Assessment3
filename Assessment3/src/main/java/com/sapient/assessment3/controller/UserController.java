@@ -38,6 +38,12 @@ public class UserController {
 		return userService.findById(id);
 	}
 	
+	@GetMapping(value="/{id}/posts", produces= {MediaType.APPLICATION_JSON_VALUE , MediaType.APPLICATION_XML_VALUE})
+	public User findPostById(@ApiParam(value="FIND BY ID")@PathVariable("id") long id)
+	{
+		return userService.findPostById(id);
+	} 
+	
 	@PutMapping(value="/{id}", consumes= {MediaType.APPLICATION_JSON_VALUE ,MediaType.APPLICATION_XML_VALUE})
 	public void updateUser(@PathVariable("id") int id, User user)
 	{
@@ -45,7 +51,7 @@ public class UserController {
 	}
 
 	@DeleteMapping(value="/{id}")
-	public void deleteProduct(@PathVariable int id)
+	public void deleteProduct(@PathVariable long id)
 	{
 		userService.deleteuser(id);		
 	}
