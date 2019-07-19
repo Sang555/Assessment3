@@ -29,9 +29,21 @@ public class userDAOImp implements UserDAO{
 		return session.createQuery("from User").list();
 	}
 
-	public User findById(int id) {
+	public User findById(long id) {
 		// TODO Auto-generated method stub
 		return sessionFactory.getCurrentSession().get(User.class, id);
+	}
+
+	public void update(long id, User user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void deleteuser(int id) {
+		// TODO Auto-generated method stub
+        Session session = sessionFactory.getCurrentSession();
+        User user = session.byId(User.class).load(id);
+        session.delete(user);
 	}
 
 }

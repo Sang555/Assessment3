@@ -33,11 +33,22 @@ public class UserController {
         return userList;
     }
 	@GetMapping(value="/{id}", produces= {MediaType.APPLICATION_JSON_VALUE , MediaType.APPLICATION_XML_VALUE})
-	public User findById(@ApiParam(value="FIND BY ID")@PathVariable("id") int id)
+	public User findById(@ApiParam(value="FIND BY ID")@PathVariable("id") long id)
 	{
 		return userService.findById(id);
 	}
 	
+	@PutMapping(value="/{id}", consumes= {MediaType.APPLICATION_JSON_VALUE ,MediaType.APPLICATION_XML_VALUE})
+	public void updateUser(@PathVariable("id") int id, User user)
+	{
+		userService.update(id,user);
+	}
+
+	@DeleteMapping(value="/{id}")
+	public void deleteProduct(@PathVariable int id)
+	{
+		userService.deleteuser(id);		
+	}
     
     @PostMapping(value = "/users", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseStatus(HttpStatus.CREATED)

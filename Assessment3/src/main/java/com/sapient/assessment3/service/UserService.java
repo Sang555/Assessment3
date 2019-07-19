@@ -4,6 +4,8 @@ import java.util.*;
 public interface UserService {
 	public void saveUser(User user);
 	public List<User> listAll();
-	public User findById(int id);
+	public User findById(long id);
+	public void update(long id, User user);
+	public void deleteuser(int id); 
 
 }

@@ -39,9 +39,20 @@ public class UserServiceImp implements UserService{
 		return userList;
 	}
 
-	public User findById(int id) {
+	public User findById(long id) {
 		// TODO Auto-generated method stub
 		return userDAO.findById(id);
+	}
+
+	public void update(long id, User user) {
+		// TODO Auto-generated method stub
+		userDAO.update(id,user);
+		
+	}
+
+	public void deleteuser(int id) {
+		// TODO Auto-generated method stub
+		userDAO.deleteuser(id);
 	}
 
 }
