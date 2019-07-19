@@ -70,7 +70,7 @@ public class UserController {
         
     }
 	@PostMapping(value="/user/{id}/posts", consumes= {MediaType.APPLICATION_JSON_VALUE , MediaType.APPLICATION_XML_VALUE})
-	public void putPostById(@ApiParam(value="FIND BY ID")@PathVariable("id") long id,@Valid @RequestBody Posts posts )
+	public void putPostById(@ApiParam(value="FIND BY ID")@PathVariable("id") long id,@Valid @RequestBody List<Posts> posts )
 	{
 		userService.putPostById(id,posts);
 	} 

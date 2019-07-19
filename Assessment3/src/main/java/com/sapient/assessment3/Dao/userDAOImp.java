@@ -62,7 +62,10 @@ public class userDAOImp implements UserDAO{
 			return null;
 	}
 
-	public void putPostById(long id, Posts post) {
+	public void putPostById(long id, List<Posts> posts) {
+		User user=sessionFactory.getCurrentSession().get(User.class, id);
+		List<Posts> plist= user.getPosts();
+		plist.addAll(posts);
 		// TODO Auto-generated method stub
 		
 	}
